@@ -1,113 +1,147 @@
 #include <stdio.h>
 #include <stdlib.h>
- 
- void triangulo(){
-     float a,b,c;
+    void triangulo()
+    {
+        float a,b,c;
+        printf("Digite os valores dos triangulo : \n");
+        scanf("%f %f %f", &a, &b, &c);
+        if (a==b&&b==c)
+        {
+            printf("equilatero \n");
+        }
+        else if (a==b||b==c||a==c)
+        {
+            printf("isoceles \n");
+        }
+        else
+        {
+            printf("escaleno \n");
+        }
+    }
+    void media ()
+    {
+        char nome[100];
+        int notas[4];
+        int resultado = 0;
+        int tamanho = sizeof(notas) / sizeof(notas[0]);
+        printf("digite o seu nome : \n");
+        scanf(" %[^\n]", &nome);
+        for(int i=0;i<tamanho;i++)
+        {
+            printf("digite a nota : %d\n", i+1);
+            scanf("%d", &notas[i]);
+            resultado = resultado + notas[i];
+        }
+        resultado=resultado/tamanho;
+    }
+    void bissexto()
+    {
+        int ano, restante;
+        printf("Digite o ano : ");
+        scanf("%d", &ano);
+        
+        if((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0)
+        {
+            printf("O ano é bissexto\n");
+        }
+        else
+        {
+            printf("O ano nâo é Bissexto\n");
+        }
+    }
+    void identificar_numero ()
+    {
+        int numero;
+        printf("Digite seu número :");
+        scanf("%d", &numero);
+        if (numero % 2 == 0 && numero % 5 == 0)
+        {
+            printf("O Número é Par e Multiplo de 5. \n");
+        }
+        else if(numero % 2 == 0)
+        {
+            printf("O Número é par. \n");
+        } 
+        else if(numero % 5 == 0)
+        {
+            printf("O Número é Multiplo de 5 e é Impar. \n");
+        }
+        else
+        {
+            printf("O Número é impar. \n");
+        }
+    }
+    void tabuada()
+    {
+        int numero_t, contador;
+        printf("\nEscolha o número para a Tabuada : ");
+        scanf("%d", &numero_t);
+        
+        for(contador=0; contador>=9; contador++);
+        printf("%d x %d = %d\n", numero_t, contador, numero_t * contador);
+    }
+        void soma_matriz()
+        {
+            int matriz1 [2][2]= {{1,2}, {3,4}};
+            int matriz2 [2][2]= {{5,6}, {7,8}};
+            int matriz3 [2][2];
+            for(int i=0; i<2; i++)
+            {
+                for(int j=0; j<2; j++)
+                {
+                    matriz3[i][j] = matriz1[i][j]+matriz2[i][j];
+                    printf("%d ", matriz3[i][j]);
+                } 
+            }
+        }
+int main()
+{
+    char menu;
+    do{
+        printf("digite a função desejada : \n\n");
+        printf("1 - Função triangulo \n");
+        printf("2 - Função Media trimestral \n");
+        printf("3 - Função bissexto \n");
+        printf("4 - Função identificar número \n");
+        printf("5 - função Soma de matriz \n");
+        printf("6 - Função Tabuada \n");
+        printf("0 - sair \n\n");
+        scanf(" %c", &menu);
+        
+        switch(menu)
+        {
+            case '1':
+            triangulo();
+            break;
+            
+            case '2':
+            media();
+            break;
+            
+            case '3':
+            bissexto();
+            break;
+            
+            case '4':
+            identificar_numero();
+            break;
+            
+            case '5':
+            soma_matriz();
+            break;
+            
+            case '6':
+            tabuada();
+            break;
+            
+            case '0':
+            printf("Encerrando programa... \n");
+            break;
+            
+            default:
+            printf("Valor invalido \n \n \n");
+        }
+     }while(menu!= '0');
      
-     printf("Insira o primeiro valor:\n");
-     scanf("%f", &a);
-     
-     printf("Insira o segundo valor:\n");
-     scanf("%f", &b);
-     
-     printf("Insira o terceiro valor:\n");
-     scanf("%f", &c);
-     
-     if (a == b && b == c){
-         printf("Equilatero\n");
-     }else if(a == c && a != b || b == a && b != c || c == a && c != b){
-         printf("Isoceles\n");
-     }else {
-         printf("escaleno\n");
-     }
- }
- void media(){
-     float nota1,nota2,nota3,media;
-     
-     printf("Insira a primeira nota:\n");
-     scanf("%f", &nota1);
-     
-     printf("Insira a segunda nota:\n");
-     scanf("%f", &nota2);
-     
-     printf("Insira a terceira nota:\n");
-     scanf("%f", &nota3);
-     
-     
-     media = (nota1 + nota2 + nota3)/3;
-     
-     if(media >= 7 || media <= 10){
-         printf("Aprovado\n");
-         
-     }else if(media < 7 && media > 5){
-         printf("Recuperação\n");
-         
-     }else{
-         printf("Reprovado\n");
-         
-     }
- }
- void AnoBisexto(){
-     int ano;
-     printf("Insira o Ano:\n");
-     scanf("%d", &ano);
-     
-     if((ano % 4 == 0 && ano %100 != 0) || (ano % 400 == 0)){
-         printf("%d é um ano bissexto.\n", ano);
-     }else{
-         printf("%d não é um ano bissexto.\n", ano);
-     }
- }
- void ParImpar(){
-     int numero;
-     
-     printf("Insira o numero:\n");
-     scanf("%d", &numero);
-     
-     if(numero % 2 == 0){
-         printf("%d é par.\n", numero);
-     }else{
-         printf("%d é impar.\n", numero);
-     }
-     
-     if(numero % 5 == 0) {
-         printf("%d é multiplo de 5.\n", numero);
-     }
- }
- int main(){
-     
-     float opcao;
-     
-     do{
-         
-      printf("Digite a função a ser selecionada:\n");
-      printf("1- Função triangulo\n");
-      printf("2- Função media\n");
-      printf("3- Função Ano bisexto\n");
-      printf("4- Função impar ou par\n");
-      printf("5- Sair do programa\n");
-      scanf("%f", &opcao);
-         
-         
-         if(opcao == 1){
-          triangulo();
-          
-      }else if(opcao == 2){
-          media();
-          
-      }else if(opcao == 3){
-          AnoBisexto();
-          
-      }else if(opcao == 4){
-          ParImpar();
-          
-         }
-       }
-     while(opcao != 5);
-     
-     
-         printf("Até logo!");
-         
-     
-     return 0;
- }
+    return 0; 
+}
